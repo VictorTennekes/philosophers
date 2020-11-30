@@ -42,15 +42,16 @@ void message(t_data *data, int id, char *msg, bool unlock)
 
 int	ft_putstr_fd(char *str, int fd)
 {
-	int i;
+	int len;
+	int tot;
 
-	i = 0;
-	while(str[i])
-	{
-		write(fd, &str[i], 1);
-		i++;
-	}
-	return (i);
+	len = 0;
+	tot = 0;
+	while (str[len] != '\0')
+		len += 1;
+	while (tot != len)
+		tot += write(fd, str + tot, len - tot);
+	return (tot);
 }
 
 void error(t_data *data, char *msg)
