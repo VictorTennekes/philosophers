@@ -66,24 +66,9 @@ typedef struct		s_data
 }					t_data;
 
 /*
-**	Utilities
-*/
-int					ft_atoi(const char *str);
-int					ft_putstr_fd(char *str, int fd);
-void				error(t_data *data, char *msg);
-bool				is_number(char *str);
-void 				message(t_data *data, int id, char *msg, bool unlock);
-char				*ultoa(unsigned long number);
-
-/*
-**	Time
-*/
-unsigned long 		get_time();
-unsigned long 		curr_time(t_data *data);
-
-/*
 **	Parser
 */
+void				init_philo(t_data *data, t_philo *philo, int id);
 void				parse_input(t_data *data, int ac, char **av);
 
 /*
@@ -92,5 +77,25 @@ void				parse_input(t_data *data, int ac, char **av);
 void 				*simulate(void *arg);
 void				init_philo(t_data *data, t_philo *philo, int id);
 
+/*
+**	Threads
+*/
+int 				start_threads(t_data *data);
+
+/*
+**	Time
+*/
+unsigned long 		get_time();
+unsigned long 		curr_time(t_data *data);
+
+/*
+**	Utilities
+*/
+int					ft_atoi(const char *str);
+int					ft_putstr_fd(char *str, int fd);
+void				error(t_data *data, char *msg);
+bool				is_number(char *str);
+void 				message(t_data *data, int id, char *msg, bool unlock);
+char				*ultoa(unsigned long number);
 
 #endif

@@ -12,7 +12,6 @@
 
 #include "philo_one.h"
 #include <unistd.h>
-#include <stdbool.h>
 
 void message(t_data *data, int id, char *msg, bool unlock)
 {

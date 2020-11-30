@@ -12,10 +12,11 @@
 
 NAME			=	philo_one
 SRCS			=	main.c\
-					utils.c\
-					time.c\
 					parser.c\
-					philo.c
+					philo.c\
+					threads.c\
+					utils.c\
+					time.c
 CFILES			=	$(SRCS:%=src/%)
 OFILES			=	$(CFILES:.c=.o)
 FLAGS			=	-Wall -Wextra -Werror

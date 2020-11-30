@@ -11,7 +11,14 @@
 /* ************************************************************************** */
 
 #include "philo_one.h"
-#include <stdio.h>
+
+void	init_philo(t_data *data, t_philo *philo, int id)
+{
+	philo->id = id + 1;
+	philo->last_eat = 0;
+	philo->meals = 0;
+	philo->data = data;
+}
 
 static bool	init_data(t_data *data, bool eat_min, char **av)
 {

@@ -11,36 +11,27 @@
 /* ************************************************************************** */
 
 #include "philo_one.h"
-#include <stdio.h>
 #include <unistd.h>
 
-static void	take_forks(t_philo *philo, pthread_mutex_t *forks, int *set)
+static void		take_forks(t_philo *philo, pthread_mutex_t *forks, int *set)
 {
 	pthread_mutex_lock(&forks[set[LEFT]]);
 	message(philo->data, philo->id, PHILO_FORK, true);
 	pthread_mutex_lock(&forks[set[RIGHT]]);
 	message(philo->data, philo->id, PHILO_EAT, true);
-	// lock
+	pthread_mutex_lock(&philo->eat_lock);
 	philo->meals++;
 	philo->last_eat = curr_time(philo->data);
-	// unlock
+	pthread_mutex_unlock(&philo->eat_lock);
 }
 
-static void	drop_forks(pthread_mutex_t *forks, int *set)
+static void		drop_forks(pthread_mutex_t *forks, int *set)
 {
 	pthread_mutex_unlock(&forks[set[LEFT]]);
 	pthread_mutex_unlock(&forks[set[RIGHT]]);
 }
 
-void		init_philo(t_data *data, t_philo *philo, int id)
-{
-	philo->id = id + 1;
-	philo->last_eat = 0;
-	philo->meals = 0;
-	philo->data = data;
-}
-
-void 		*simulate(void *arg)
+void 			*simulate(void *arg)
 {
 	t_philo *philo;
 	int		forks[2];
@@ -48,9 +39,6 @@ void 		*simulate(void *arg)
 	philo = arg;
 	forks[LEFT] = philo->id - 1;
 	forks[RIGHT] = philo->id != philo->data->phil_count ? philo->id : 0;
-	#ifdef DEBUG
-		dprintf(2 ,"philo[%i]->forks[%i, %i]\n", philo->id, forks[LEFT], forks[RIGHT]);
-	#endif
 	while (1)
 	{
 		message(philo->data, philo->id, PHILO_THINK, true);
