@@ -27,7 +27,7 @@
 # include <semaphore.h>
 # include <stdbool.h>
 # include <stdlib.h>
-# include <sys/types.h>
+# include <fcntl.h>
 # include <pthread.h>
 
 enum				e_fork
