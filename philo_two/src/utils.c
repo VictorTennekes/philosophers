@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_one.h"
+#include "philo_two.h"
 #include <unistd.h>
 
 void message(t_data *data, int id, char *msg, bool unlock)
@@ -29,13 +29,13 @@ void message(t_data *data, int id, char *msg, bool unlock)
 		free(time_str);
 		error(data, E_MALLOC "id_string");
 	}
-	pthread_mutex_lock(&data->write_lock);
+	sem_wait(data->write_lock);
 	ft_putstr_fd(time_str, 1);
 	write(1, " ", 1);
 	ft_putstr_fd(id_str, 1);
 	ft_putstr_fd(msg, 1);
 	if (unlock)
-		pthread_mutex_unlock(&data->write_lock);
+		sem_post(data->write_lock);
 	free(time_str);
 	free(id_str);
 }
