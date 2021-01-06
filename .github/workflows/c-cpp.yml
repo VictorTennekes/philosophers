@@ -17,6 +17,9 @@ jobs:
       
     - name: philo_two
       run:  make re -C philo_two
+
+    - name: philo_three
+      run:  make re -C philo_three
     
   macos-build:
     runs-on: macos-latest
@@ -28,3 +31,6 @@ jobs:
         
       - name: philo_two
         run:  make re -C philo_two
+      
+      -name: philo_three
+        run:  make re -C philo_three
