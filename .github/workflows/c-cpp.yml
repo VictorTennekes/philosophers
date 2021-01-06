@@ -32,5 +32,5 @@ jobs:
       - name: philo_two
         run:  make re -C philo_two
       
-      -name: philo_three
+      - name: philo_three
         run:  make re -C philo_three
