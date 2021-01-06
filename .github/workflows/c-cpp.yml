@@ -1,10 +1,6 @@
 name: philo macOS/Ubuntu compile
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: push
 
 jobs:
   ubuntu-build:
