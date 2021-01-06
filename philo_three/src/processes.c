@@ -28,7 +28,7 @@ static void kill_processes(t_data *data)
 	i = 0;
 	while (i < data->phil_count)
 	{
-		(void)waitpid(data->pids[i], &pid, 0);
+		waitpid(data->pids[i], &pid, 0);
 		i++;
 	}
 	exit(0);
