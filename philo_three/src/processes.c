@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "philo_three.h"
+#include <sys/wait.h>
 #include <unistd.h>
 #include <signal.h>
 
@@ -28,7 +29,7 @@ static void kill_processes(t_data *data)
 	i = 0;
 	while (i < data->phil_count)
 	{
-		waitpid(data->pids[i], &pid, 0);
+		(void)waitpid(data->pids[i], &pid, 0);
 		i++;
 	}
 	exit(0);
