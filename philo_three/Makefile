@@ -15,7 +15,8 @@ SRCS			=	main.c\
 					parser.c\
 					philo.c\
 					processes.c\
-					utils.c\
+					utils_one.c\
+					utils_two.c\
 					time.c
 CFILES			=	$(SRCS:%=src/%)
 OFILES			=	$(CFILES:.c=.o)

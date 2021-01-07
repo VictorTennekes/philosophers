@@ -25,9 +25,9 @@ static int	reaper(t_data *data, unsigned int res, int i)
 
 static int	manager(t_data *data)
 {
-	int i;
-	unsigned int res;
-	unsigned int philo[2];
+	int				i;
+	unsigned int	res;
+	unsigned int	philo[2];
 
 	while (1)
 	{
@@ -51,12 +51,13 @@ static int	manager(t_data *data)
 	}
 }
 
-int 		start_threads(t_data *data)
+int			start_threads(t_data *data)
 {
-	int i;
-	pthread_t thread;
+	int			i;
+	pthread_t	thread;
 
 	i = 0;
+	data->start_time = get_time();
 	while (i < data->phil_count)
 	{
 		if (pthread_create(&thread, NULL, simulate, &data->philos[i]))

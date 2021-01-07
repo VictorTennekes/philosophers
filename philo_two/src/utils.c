@@ -13,11 +13,11 @@
 #include "philo_two.h"
 #include <unistd.h>
 
-void message(t_data *data, int id, char *msg, bool unlock)
+void	message(t_data *data, int id, char *msg, bool unlock)
 {
-	unsigned int time;
-	char *time_str;
-	char *id_str;
+	unsigned int	time;
+	char			*time_str;
+	char			*id_str;
 
 	time = curr_time(data);
 	time_str = ultoa(time);
@@ -40,7 +40,7 @@ void message(t_data *data, int id, char *msg, bool unlock)
 	free(id_str);
 }
 
-int	ft_putstr_fd(char *str, int fd)
+int		ft_putstr_fd(char *str, int fd)
 {
 	int len;
 	int tot;
@@ -54,16 +54,7 @@ int	ft_putstr_fd(char *str, int fd)
 	return (tot);
 }
 
-void error(t_data *data, char *msg)
-{
-	ft_putstr_fd("Error: ", 2);
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
-	free(data);
-	exit(1);
-}
-
-bool is_number(char *str)
+bool	is_number(char *str)
 {
 	int i;
 
@@ -77,7 +68,7 @@ bool is_number(char *str)
 	return (false);
 }
 
-char		*ultoa(unsigned long number)
+char	*ultoa(unsigned long number)
 {
 	char			*res;
 	int				size;
@@ -92,7 +83,7 @@ char		*ultoa(unsigned long number)
 	}
 	res = malloc(sizeof(char) * size + 1);
 	if (!res)
-		return NULL;
+		return (NULL);
 	res[size] = '\0';
 	while (size)
 	{

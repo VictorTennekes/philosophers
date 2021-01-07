@@ -104,12 +104,14 @@ unsigned long 		curr_time(t_data *data);
 /*
 **	Utilities
 */
-int					ft_atoi(const char *str);
+size_t				ft_strlen(const char *s);
+void 				message(t_data *data, int id, char *msg, bool unlock);
 int					ft_putstr_fd(char *str, int fd);
 bool				is_number(char *str);
-void 				message(t_data *data, int id, char *msg, bool unlock);
 char				*ultoa(unsigned long number);
+
 sem_t				*init_sem(t_data *data, char *name, int val);
 char				*ft_strjoin(char const *s1, char const *s2);
+int					ft_atoi(const char *str);
 
 #endif

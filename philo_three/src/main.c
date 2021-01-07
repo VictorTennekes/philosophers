@@ -14,7 +14,7 @@
 #include <string.h>
 #include <unistd.h>
 
-void error(t_data *data, char *msg)
+void	error(t_data *data, char *msg)
 {
 	ft_putstr_fd("Error: ", 2);
 	ft_putstr_fd(msg, 2);
@@ -24,11 +24,11 @@ void error(t_data *data, char *msg)
 	exit(1);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_data	*data;
 	char	*id;
-	int i;
+	int		i;
 
 	i = 0;
 	data = malloc(sizeof(t_data));

@@ -12,7 +12,7 @@
 
 #include "philo_two.h"
 
-void	init_philo(t_data *data, t_philo *philo, int id)
+void		init_philo(t_data *data, t_philo *philo, int id)
 {
 	philo->id = id + 1;
 	philo->last_eat = 0;
@@ -38,7 +38,7 @@ static bool	init_data(t_data *data, bool eat_min, char **av)
 	return (false);
 }
 
-void parse_input(t_data *data, int ac, char **av)
+void		parse_input(t_data *data, int ac, char **av)
 {
 	int i;
 

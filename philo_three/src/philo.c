@@ -13,7 +13,7 @@
 #include "philo_three.h"
 #include <unistd.h>
 
-static int	reaper(t_philo *philo, unsigned int res)
+static int		reaper(t_philo *philo, unsigned int res)
 {
 	if (res > philo->data->time.die)
 	{
@@ -24,16 +24,17 @@ static int	reaper(t_philo *philo, unsigned int res)
 	return (0);
 }
 
-static void	*manager(void *arg)
+static void		*manager(void *arg)
 {
 	t_philo			*philo;
 	unsigned int	res;
 
 	philo = arg;
-	while(1)
+	while (1)
 	{
 		sem_wait(philo->eat_lock);
-		if (!philo->reached && philo->data->min_eat && philo->meals >= philo->data->min_eat)
+		if (!philo->reached && philo->data->min_eat
+			&& philo->meals >= philo->data->min_eat)
 		{
 			sem_post(philo->mealsreached);
 			philo->reached = 1;
@@ -65,7 +66,7 @@ static void		drop_forks(sem_t *forks)
 	sem_post(forks);
 }
 
-void 			simulate(t_philo *philo)
+void			simulate(t_philo *philo)
 {
 	pthread_t	thread;
 

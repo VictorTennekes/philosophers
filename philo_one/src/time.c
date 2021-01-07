@@ -13,7 +13,7 @@
 #include "philo_one.h"
 #include <sys/time.h>
 
-unsigned long get_time()
+unsigned long	get_time(void)
 {
 	struct timeval	time;
 	unsigned long	res;
@@ -24,7 +24,7 @@ unsigned long get_time()
 	return (res);
 }
 
-unsigned long curr_time(t_data *data)
+unsigned long	curr_time(t_data *data)
 {
 	return (get_time() - data->start_time);
 }

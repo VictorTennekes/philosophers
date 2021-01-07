@@ -14,11 +14,20 @@
 #include <string.h>
 #include <unistd.h>
 
-int main(int ac, char **av)
+void	error(t_data *data, char *msg)
+{
+	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	free(data);
+	exit(1);
+}
+
+int		main(int ac, char **av)
 {
 	t_data	*data;
 	char	*id;
-	int i;
+	int		i;
 
 	i = 0;
 	data = malloc(sizeof(t_data));
@@ -32,7 +41,7 @@ int main(int ac, char **av)
 	{
 		id = ultoa(i);
 		sem_unlink(id);
-		data->philos[i].eat_lock = sem_open(id, O_CREAT , 666, 1);
+		data->philos[i].eat_lock = sem_open(id, O_CREAT, 666, 1);
 		init_philo(data, &data->philos[i], i);
 		i++;
 	}

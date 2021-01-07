@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-static void kill_processes(t_data *data)
+static void	kill_processes(t_data *data)
 {
 	int		i;
 	pid_t	pid;
@@ -34,7 +34,7 @@ static void kill_processes(t_data *data)
 	exit(0);
 }
 
-void *satisfaction_counter(void *arg)
+void		*satisfaction_counter(void *arg)
 {
 	t_data	*data;
 	int		i;
@@ -50,11 +50,11 @@ void *satisfaction_counter(void *arg)
 	return (NULL);
 }
 
-void 		start_processes(t_data *data)
+void		start_processes(t_data *data)
 {
-	int i;
-	int	pid;
-	pthread_t thread;
+	int			i;
+	int			pid;
+	pthread_t	thread;
 
 	i = 0;
 	data->start_time = get_time();

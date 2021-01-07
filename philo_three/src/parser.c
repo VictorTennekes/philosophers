@@ -13,7 +13,7 @@
 #include "philo_three.h"
 #include <string.h>
 
-void	init_philo(t_data *data, t_philo *philo, int id, char *str_id)
+void		init_philo(t_data *data, t_philo *philo, int id, char *str_id)
 {
 	char *str_res;
 
@@ -45,7 +45,7 @@ static bool	init_data(t_data *data, bool eat_min, char **av)
 	return (false);
 }
 
-void parse_input(t_data *data, int ac, char **av)
+void		parse_input(t_data *data, int ac, char **av)
 {
 	int i;
 

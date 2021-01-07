@@ -14,10 +14,19 @@
 #include <string.h>
 #include <unistd.h>
 
-int main(int ac, char **av)
+void	error(t_data *data, char *msg)
 {
-	t_data *data;
-	int i;
+	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	free(data);
+	exit(1);
+}
+
+int		main(int ac, char **av)
+{
+	t_data	*data;
+	int		i;
 
 	i = 0;
 	data = malloc(sizeof(t_data));

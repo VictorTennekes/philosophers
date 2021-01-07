@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   utils_one.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: vtenneke <vtenneke@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -13,7 +13,7 @@
 #include "philo_three.h"
 #include <unistd.h>
 
-static size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t len;
 
@@ -23,11 +23,11 @@ static size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void message(t_data *data, int id, char *msg, bool unlock)
+void	message(t_data *data, int id, char *msg, bool unlock)
 {
-	unsigned int time;
-	char *time_str;
-	char *id_str;
+	unsigned int	time;
+	char			*time_str;
+	char			*id_str;
 
 	time = curr_time(data);
 	time_str = ultoa(time);
@@ -50,7 +50,7 @@ void message(t_data *data, int id, char *msg, bool unlock)
 	free(id_str);
 }
 
-int	ft_putstr_fd(char *str, int fd)
+int		ft_putstr_fd(char *str, int fd)
 {
 	int len;
 	int tot;
@@ -62,7 +62,7 @@ int	ft_putstr_fd(char *str, int fd)
 	return (tot);
 }
 
-bool is_number(char *str)
+bool	is_number(char *str)
 {
 	int i;
 
@@ -76,7 +76,7 @@ bool is_number(char *str)
 	return (false);
 }
 
-char		*ultoa(unsigned long number)
+char	*ultoa(unsigned long number)
 {
 	char			*res;
 	int				size;
@@ -91,7 +91,7 @@ char		*ultoa(unsigned long number)
 	}
 	res = malloc(sizeof(char) * size + 1);
 	if (!res)
-		return NULL;
+		return (NULL);
 	res[size] = '\0';
 	while (size)
 	{
@@ -100,66 +100,4 @@ char		*ultoa(unsigned long number)
 		size--;
 	}
 	return (res);
-}
-
-int		ft_atoi(const char *str)
-{
-	int					sign;
-	unsigned long int	res;
-
-	sign = 1;
-	res = 0;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		sign = *str == '-' ? -1 : 1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + (*str - '0');
-		str++;
-	}
-	return (sign * (int)res);
-}
-
-sem_t	*init_sem(t_data *data, char *name, int val)
-{
-	sem_t *res;
-
-	sem_unlink(name);
-	res = sem_open(name, O_CREAT, 666, val);
-	if (!res)
-		error(data, E_SEMAPH);
-	return (res);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*dest;
-	size_t	i;
-	size_t	k;
-
-	k = 0;
-	if (s1 == 0)
-		return (NULL);
-	i = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char*)malloc(i + 1);
-	if (!(dest))
-		return (NULL);
-	while (*s1)
-	{
-		dest[k] = *s1;
-		s1++;
-		k++;
-	}
-	while (*s2)
-	{
-		dest[k] = *s2;
-		s2++;
-		k++;
-	}
-	dest[k] = '\0';
-	return (dest);
 }

@@ -31,7 +31,7 @@ static void		drop_forks(sem_t *forks)
 	sem_post(forks);
 }
 
-void 			*simulate(void *arg)
+void			*simulate(void *arg)
 {
 	t_philo *philo;
 
@@ -45,5 +45,5 @@ void 			*simulate(void *arg)
 		message(philo->data, philo->id, PHILO_SLEEP, true);
 		usleep(philo->data->time.sleep * 1000);
 	}
-	return(NULL);
+	return (NULL);
 }
