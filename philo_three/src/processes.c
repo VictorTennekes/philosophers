@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "philo_three.h"
+#include <sys/wait.h>
 #include <unistd.h>
 #include <signal.h>
 

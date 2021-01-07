@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "philo_three.h"
-#include <string.h>
 
 void		init_philo(t_data *data, t_philo *philo, int id, char *str_id)
 {
