@@ -23,6 +23,7 @@ void		init_philo(t_data *data, t_philo *philo, int id, char *str_id)
 	philo->reached = false;
 	str_res = ft_strjoin("satis", str_id);
 	data->satisfaction[id] = init_sem(data, str_res, 0);
+	philo->mealsreached = data->satisfaction[id];
 	free(str_res);
 }
 

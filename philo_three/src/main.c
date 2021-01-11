@@ -47,5 +47,6 @@ int		main(int ac, char **av)
 		i++;
 	}
 	start_processes(data);
+	system("leaks philo_three");
 	return (0);
 }

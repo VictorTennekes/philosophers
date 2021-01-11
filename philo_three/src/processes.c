@@ -15,6 +15,13 @@
 #include <unistd.h>
 #include <signal.h>
 
+static void	free_machine(t_data *data)
+{
+	free(data->satisfaction);
+	free(data->pids);
+	free(data->philos);
+}
+
 static void	kill_processes(t_data *data)
 {
 	int		i;
@@ -32,6 +39,7 @@ static void	kill_processes(t_data *data)
 		(void)waitpid(data->pids[i], &pid, 0);
 		i++;
 	}
+	free_machine(data);
 	exit(0);
 }
 
