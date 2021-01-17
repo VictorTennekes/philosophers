@@ -41,7 +41,7 @@ static int	manager(t_data *data)
 			res = curr_time(data) - philo[0];
 			if (reaper(data, res, i))
 				return (1);
-			if ((int)philo[1] == data->min_eat)
+			if ((int)philo[1] >= data->min_eat && data->should_eat)
 				i++;
 			else
 				break ;
@@ -57,6 +57,7 @@ int			start_threads(t_data *data)
 	pthread_t	thread;
 
 	i = 0;
+	data->start_time = get_time();
 	while (i < data->phil_count)
 	{
 		if (pthread_create(&thread, NULL, simulate, &data->philos[i]))
