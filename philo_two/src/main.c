@@ -42,6 +42,7 @@ int		main(int ac, char **av)
 		id = ultoa(i);
 		sem_unlink(id);
 		data->philos[i].eat_lock = sem_open(id, O_CREAT, 666, 1);
+		free(id);
 		init_philo(data, &data->philos[i], i);
 		i++;
 	}
