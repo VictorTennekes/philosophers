@@ -27,7 +27,7 @@ static int	manager(t_data *data)
 {
 	int				i;
 	unsigned int	res;
-	unsigned int	philo[2];
+	unsigned int	tmp;
 
 	while (1)
 	{
@@ -35,13 +35,12 @@ static int	manager(t_data *data)
 		while (i < data->phil_count)
 		{
 			sem_wait(data->philos[i].eat_lock);
-			philo[0] = data->philos[i].last_eat;
-			philo[1] = data->philos[i].meals;
-			sem_post(data->philos[i].eat_lock);
-			res = curr_time(data) - philo[0];
+			tmp = data->philos[i].meals;
+			res = curr_time(data) - data->philos[i].last_eat;
 			if (reaper(data, res, i))
 				return (1);
-			if ((int)philo[1] >= data->min_eat && data->should_eat)
+			sem_post(data->philos[i].eat_lock);
+			if ((int)tmp >= data->min_eat && data->should_eat)
 				i++;
 			else
 				break ;
