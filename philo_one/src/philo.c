@@ -18,8 +18,9 @@ static void		take_forks(t_philo *philo, pthread_mutex_t *forks, int *set)
 	pthread_mutex_lock(&forks[set[LEFT]]);
 	message(philo->data, philo->id, PHILO_FORK, true);
 	pthread_mutex_lock(&forks[set[RIGHT]]);
-	message(philo->data, philo->id, PHILO_EAT, true);
+	message(philo->data, philo->id, PHILO_FORK, true);
 	pthread_mutex_lock(&philo->eat_lock);
+	message(philo->data, philo->id, PHILO_EAT, true);
 	philo->meals++;
 	philo->last_eat = curr_time(philo->data);
 	pthread_mutex_unlock(&philo->eat_lock);

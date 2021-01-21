@@ -18,8 +18,9 @@ static void		take_forks(t_philo *philo, sem_t *forks)
 	sem_wait(forks);
 	message(philo->data, philo->id, PHILO_FORK, true);
 	sem_wait(forks);
-	message(philo->data, philo->id, PHILO_EAT, true);
+	message(philo->data, philo->id, PHILO_FORK, true);
 	sem_wait(philo->eat_lock);
+	message(philo->data, philo->id, PHILO_EAT, true);
 	philo->meals++;
 	philo->last_eat = curr_time(philo->data);
 	sem_post(philo->eat_lock);

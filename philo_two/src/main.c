@@ -48,5 +48,5 @@ int		main(int ac, char **av)
 	}
 	if (!data->philos)
 		error(data, E_MALLOC "philosophers");
-	start_threads(data);
+	return(start_threads(data));
 }

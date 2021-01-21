@@ -19,7 +19,6 @@ void	error(t_data *data, char *msg)
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
 	free(data);
-	system("leaks philo_three");
 	exit(1);
 }
 
@@ -47,6 +46,5 @@ int		main(int ac, char **av)
 		i++;
 	}
 	start_processes(data);
-	system("leaks philo_three");
 	return (0);
 }
