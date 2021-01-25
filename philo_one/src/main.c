@@ -12,7 +12,6 @@
 
 #include "philo_one.h"
 #include <string.h>
-#include <unistd.h>
 
 void	error(t_data *data, char *msg)
 {
