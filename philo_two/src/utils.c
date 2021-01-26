@@ -30,8 +30,8 @@ void	message(t_data *data, int id, char *msg, bool unlock)
 		error(data, E_MALLOC "id_string");
 	}
 	sem_wait(data->write_lock);
-	ft_putstr_fd(time_str, 1);
-	(void)write(1, " ", 1);
+	ft_putstr_fd(time_str, 1);	
+	ft_putstr_fd(" ", 1);
 	ft_putstr_fd(id_str, 1);
 	ft_putstr_fd(msg, 1);
 	if (unlock)
