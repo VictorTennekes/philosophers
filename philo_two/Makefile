@@ -19,7 +19,7 @@ SRCS			=	main.c\
 					time.c
 CFILES			=	$(SRCS:%=src/%)
 OFILES			=	$(CFILES:.c=.o)
-FLAGS			=	-Wall -Wextra -Werror
+FLAGS			=	-Wall -Wextra -Werror -O3
 TAIL			=	-pthread
 INCLUDES		=	-I include
 TARGETS 		=	$(OFILES)
