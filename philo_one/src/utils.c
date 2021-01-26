@@ -31,7 +31,7 @@ void	message(t_data *data, int id, char *msg, bool unlock)
 	}
 	pthread_mutex_lock(&data->write_lock);
 	ft_putstr_fd(time_str, 1);
-	write(1, " ", 1);
+	(void)write(1, " ", 1);
 	ft_putstr_fd(id_str, 1);
 	ft_putstr_fd(msg, 1);
 	if (unlock)
